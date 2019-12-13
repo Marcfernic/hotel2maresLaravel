@@ -30,7 +30,7 @@ class HabitacionesController extends Controller
         $habitacion->precio = $request->precio;
         $habitacion->save();
         return redirect('/habitaciones');
-    }    
+    }
 
     public function getEdit($id)
     {
@@ -56,6 +56,11 @@ class HabitacionesController extends Controller
         $habitacion->reservada = !$habitacion->reservada;
         $habitacion->save();
         return back();
+    }
+
+    public function getCreate()
+    {
+        return view('habitaciones.create');
     }
 
 }

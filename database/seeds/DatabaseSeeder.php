@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-//use App\Habitacion;
+use App\Habitacion;
 use App\User;
 
 class DatabaseSeeder extends Seeder
@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-          //self::seedHabitaciones();
+          self::seedHabitaciones();
           $this->command->info('Tabla habitaciones inicializada con datos!');
           self::seedUsers();
           $this->command->info('Tabla usuarios inicializada con datos!');
@@ -34,6 +34,17 @@ class DatabaseSeeder extends Seeder
                 'email' => 'usuario2@hotel2mares.com',
                 'password' => bcrypt('alumno')
         ]);
+    }
+
+    private static function seedHabitaciones(){
+        foreach (self::$arrayHabitaciones as $habitacion) {
+            //print_r($habitacion);
+            $h = new Habitacion;
+            $h->numero = $habitacion['numero'];
+            $h->categoria = $habitacion['categoria'];
+            $h->precio = $habitacion['precio'];
+            $h->save();
+        }
     }
 
     private static $arrayHabitaciones = array(

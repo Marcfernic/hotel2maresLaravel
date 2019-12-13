@@ -16,9 +16,9 @@ Route::get('habitaciones/create', 'HabitacionesController@getCreate');
 
 
 Route::group(['middleware' => 'auth'], function(){
-    
+
     Route::get('/', 'HomeController@index');
-    
+
     Route::group(['prefix' => 'habitaciones'], function(){
 
         Route::get('/', 'HabitacionesController@getIndex');
@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('edit/{id}', 'HabitacionesController@getEdit');
 
         Route::post('create', 'HabitacionesController@postCreate');
+
+        Route::get('/create', 'HabitacionesController@getCreate');
 
         Route::put('edit/{id}', 'HabitacionesController@putEdit');
 
